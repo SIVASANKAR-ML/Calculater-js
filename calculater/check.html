@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Local Setup</title>
+    
+    <!-- Link to the Bootstrap CSS -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        .calculator {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #f8f9fa;
+        }
+        .calculator-screen {
+            height: 70px;
+            background-color: #222;
+            color: #fff;
+            font-size: 2rem;
+            text-align: right;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .calculator-keys button {
+            font-size: 1.5rem;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="calculator">
+            <!-- Screen -->
+            <input type="text" class="calculator-screen form-control" id="calculator-screen" disabled />
+
+            <!-- Calculator Buttons -->
+            <div class="calculator-keys row">
+                <div class="col-3">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="appendNumber('7')">7</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="appendNumber('8')">8</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="appendNumber('9')">9</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-warning btn-block" onclick="chooseOperator('/')">/</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="appendNumber('4')">4</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="appendNumber('5')">5</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="appendNumber('6')">6</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-warning btn-block" onclick="chooseOperator('*')">×</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="appendNumber('1')">1</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="appendNumber('2')">2</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="appendNumber('3')">3</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-warning btn-block" onclick="chooseOperator('-')">−</button>
+                </div>
+
+                <div class="col-3">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="appendNumber('0')">0</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="appendNumber('.')">.</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-danger btn-block" onclick="clearScreen()">C</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-warning btn-block" onclick="chooseOperator('+')">+</button>
+                </div>
+
+                <div class="col-12">
+                    <button type="button" class="btn btn-success btn-block" onclick="calculate()">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (include Popper) -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Calculator Script -->
+    <script>
+        let currentInput = '';
+        let previousInput = '';
+        let operator = '';
+
+        function appendNumber(number) {
+            currentInput += number;
+            document.getElementById('calculator-screen').value = currentInput;
+        }
+
+        function chooseOperator(op) {
+            if (currentInput === '') return;
+            if (previousInput !== '') {
+                calculate();
+            }
+            operator = op;
+            previousInput = currentInput;
+            currentInput = '';
+        }
+
+        function calculate() {
+            let result;
+            const prev = parseFloat(previousInput);
+            const curr = parseFloat(currentInput);
+
+            if (isNaN(prev) || isNaN(curr)) return;
+
+            switch (operator) {
+                case '+':
+                    result = prev + curr;
+                    break;
+                case '-':
+                    result = prev - curr;
+                    break;
+                case '*':
+                    result = prev * curr;
+                    break;
+                case '/':
+                    result = prev / curr;
+                    break;
+                default:
+                    return;
+            }
+
+            currentInput = result.toString();
+            operator = '';
+            previousInput = '';
+            document.getElementById('calculator-screen').value = currentInput;
+        }
+
+        function clearScreen() {
+            currentInput = '';
+            previousInput = '';
+            operator = '';
+            document.getElementById('calculator-screen').value = '';
+        }
+    </script>
+</body>
+</html>

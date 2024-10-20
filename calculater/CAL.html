@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/js-project/calculater/CAL.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="container">
+        <!-- <img src="/js-project/calculater/media/calculator-on-a-blue-background-photo.jpg" alt=""> -->
+        <div class="calculater">
+            <!-- screen -->
+            <div class="screen">
+               <input type="text" class="calculator-screen form-control cal-scr" id="calculator-screen">
+            </div>
+            <!-- claculater keys -->
+
+            <div class="calculator-keys  cal-key">
+                <div class="calculator-keys">
+                    <button class="btn btn-secondary" onclick="inputnum('7')">7</button>
+                    <button class="btn btn-secondary" onclick="inputnum('8')">8</button>
+                    <button class="btn btn-secondary" onclick="inputnum('9')">9</button>
+                    <button class="btn btn-danger" onclick="">C</button>
+    
+                    <button class="btn btn-secondary" onclick="inputnum('4')">4</button>
+                    <button class="btn btn-secondary">5</button>
+                    <button class="btn btn-secondary" onclick="inputnum('6')">6</button>
+                    <button class="btn btn-warning">/</button>
+    
+                    <button class="btn btn-secondary" onclick="inputnum('1')">1</button>
+                    <button class="btn btn-secondary" onclick="inputnum('2')">2</button>
+                    <button class="btn btn-secondary" onclick="inputnum('3')">3</button>
+                    <button class="btn btn-warning">*</button>
+    
+                    <button class="btn btn-secondary" onclick="inputnum('0')">0</button>
+                    <button class="btn btn-secondary">.</button>
+                    <button class="btn btn-success">=</button>
+                    <button class="btn btn-warning">+</button>
+    
+                    <button class="btn btn-warning col-span-2">-</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js-project/calculater/CLA.js"></script>
+</body>
+</html>
