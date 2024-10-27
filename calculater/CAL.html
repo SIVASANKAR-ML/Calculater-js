@@ -22,24 +22,23 @@
                     <button class="btn btn-secondary" onclick="inputnum('7')">7</button>
                     <button class="btn btn-secondary" onclick="inputnum('8')">8</button>
                     <button class="btn btn-secondary" onclick="inputnum('9')">9</button>
-                    <button class="btn btn-danger" onclick="">C</button>
+                    <button class="btn btn-danger" onclick="clearScreen('C')">C</button>
     
                     <button class="btn btn-secondary" onclick="inputnum('4')">4</button>
                     <button class="btn btn-secondary">5</button>
                     <button class="btn btn-secondary" onclick="inputnum('6')">6</button>
-                    <button class="btn btn-warning">/</button>
+                    <button class="btn btn-warning" onclick="chooseOperator('/')">/</button>
     
                     <button class="btn btn-secondary" onclick="inputnum('1')">1</button>
                     <button class="btn btn-secondary" onclick="inputnum('2')">2</button>
                     <button class="btn btn-secondary" onclick="inputnum('3')">3</button>
-                    <button class="btn btn-warning">*</button>
+                    <button class="btn btn-warning" onclick="chooseOperator('*')">*</button>
     
                     <button class="btn btn-secondary" onclick="inputnum('0')">0</button>
                     <button class="btn btn-secondary">.</button>
-                    <button class="btn btn-success">=</button>
-                    <button class="btn btn-warning">+</button>
-    
-                    <button class="btn btn-warning col-span-2">-</button>
+                    <button class="btn btn-success" onclick="calculate('=')">=</button>
+                    <button class="btn btn-warning" onclick="chooseOperator('+')">+</button>
+                    <button class="btn btn-warning" onclick="chooseOperator('-')">-</button>
                 </div>
             </div>
         </div>

@@ -1,22 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let screen = document.getElementById('calculator-screen'); // Get the calculator screen
+    let screen = document.getElementById('calculator-screen'); 
     let currentInput = '';
     let previousInput = '';
     let operator = '';
 
     function inputnum(num) {
-        currentInput += num; // Append the clicked number
-        screen.value = currentInput; // Update the screen
+        currentInput += num; 
+        screen.value = currentInput; 
     }
 
     function chooseOperator(op) {
-        if (currentInput === '') return; // Prevent empty input
+        if (currentInput === '') return; 
         if (previousInput !== '') {
-            calculate(); // Calculate if there's a previous input
+            calculate(); 
         }
-        operator = op; // Set the operator
-        previousInput = currentInput; // Store the current input
-        currentInput = ''; // Clear the current input for the next number
+        operator = op; 
+        previousInput = currentInput; 
+        currentInput = ''; 
     }
 
     function calculate() {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const prev = parseFloat(previousInput);
         const curr = parseFloat(currentInput);
 
-        if (isNaN(prev) || isNaN(curr)) return; // Ensure valid numbers
+        if (isNaN(prev) || isNaN(curr)) return; 
 
         switch (operator) {
             case '+':
@@ -43,32 +43,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
         }
 
-        currentInput = result.toString(); // Set result as current input
-        operator = ''; // Clear operator
-        previousInput = ''; // Clear previous input
-        screen.value = currentInput; // Display result
-    }
+        currentInput = result.toString(); 
+        operator = ''; 
+        previousInput = ''; 
+        screen.value = currentInput; 
 
     function clearScreen() {
         currentInput = '';
         previousInput = '';
         operator = '';
-        screen.value = ''; // Clear the screen
+        screen.value = ''; 
     }
 
-    // Add event listeners to buttons
+ 
     const keys = document.querySelectorAll('.calculator-keys button');
     keys.forEach(key => {
         key.addEventListener('click', (event) => {
             const keyContent = event.target.textContent;
             if (keyContent === 'C') {
-                clearScreen(); // Clear screen
+                clearScreen(); 
             } else if (['+', '-', '*', '/'].includes(keyContent)) {
-                chooseOperator(keyContent); // Choose operator
+                chooseOperator(keyContent); 
             } else if (keyContent === '=') {
-                calculate(); // Calculate result
+                calculate(); 
             } else {
-                inputnum(keyContent); // Input number
+                inputnum(keyContent); 
             }
         });
     });
